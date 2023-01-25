@@ -65,6 +65,11 @@ p {
   bottom: 30px;
   right: 30px;
 }
+.btn-wraper-clear {
+  position: absolute;
+  bottom: 80px;
+  right: 30px;
+}
 .btn-wraper .btn-save-class {
   padding: 10px 5px;
   background-color: green;
@@ -72,7 +77,18 @@ p {
   border-radius: 5px;
   cursor: pointer;
 }
-.btn-wraper:hover {
+.btn-wraper-clear .btn-clear-storage {
+  padding: 10px 5px;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-wraper .btn-save-class:hover {
   transform: scale(1.2);
   background-color: rgb(1, 77, 1);
+}
+.btn-wraper-clear .btn-clear-storage:hover {
+  transform: scale(1.2);
+  background-color: rgb(122, 33, 0);
 }
