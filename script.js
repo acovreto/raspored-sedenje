@@ -62,6 +62,7 @@ const classI4 = `1. Богојовски Благоја
 31. Трифуноски Кристијан
 32. Трпески Бојан`;
 const btnSaveRaspored = document.querySelector(".btn-save-class");
+const btnClearStorage = document.querySelector(".btn-clear-storage");
 const rasSedWraper = document.querySelector(".ras-sed-wraper");
 
 // console.log(listStudents);
@@ -82,9 +83,9 @@ if (!localStorage.getItem("studentDataSeatsI4")) {
   if (listStudents.length > 30) {
     for (let i = listStudents.length; i < 36; i++) {
       listStudentsData[i] = {
-        seat: null,
-        name: null,
-        photo: null,
+        seat: i,
+        name: "",
+        photo: "Avatar.PNG",
       };
     }
   }
@@ -103,12 +104,12 @@ for (let i = 1; i <= Math.ceil(listStudentsDataSeats.length / 2); i++) {
     2 * i - 2
   }" draggable="true"><img class="student-img" 
   src="${
-    listStudentsDataSeats[2 * i - 2].photo != null
+    listStudentsDataSeats[2 * i - 2].photo != ""
       ? listStudentsDataSeats[2 * i - 2].photo
       : "Avatar.PNG"
   }" width=60px height=60px />
   <p>${
-    listStudentsDataSeats[2 * i - 2].name != null
+    listStudentsDataSeats[2 * i - 2].name != ""
       ? listStudentsDataSeats[2 * i - 2].name
       : ""
   }</p>
@@ -117,12 +118,12 @@ for (let i = 1; i <= Math.ceil(listStudentsDataSeats.length / 2); i++) {
     2 * i - 1
   }"  draggable="true"><img class="student-img" 
   src="${
-    listStudentsDataSeats[2 * i - 1].photo != null
+    listStudentsDataSeats[2 * i - 1].photo != ""
       ? listStudentsDataSeats[2 * i - 1].photo
       : "Avatar.PNG"
   }" width=60px height=60px />
   <p>${
-    listStudentsDataSeats[2 * i - 1].name != null
+    listStudentsDataSeats[2 * i - 1].name != ""
       ? listStudentsDataSeats[2 * i - 1].name
       : ""
   }</p>
@@ -190,9 +191,9 @@ function dragDrop() {
 function swapItems(fromIndex, toIndex) {
   let fromIndexEl = document.querySelector(`[data-index="${fromIndex}"]`);
   fromIndexEl.classList.remove("invisible");
-  console.log(fromIndexEl);
+  // console.log(fromIndexEl);
   let toIndexEl = document.querySelector(`[data-index="${toIndex}"]`);
-  console.log(toIndexEl);
+  // console.log(toIndexEl);
   fromIndexEl.innerHTML = `<img class="student-img" 
   src="${listStudentsDataSeats[toIndex].photo}" width=60px height=60px />
   <p>${listStudentsDataSeats[toIndex].name}</p>`;
@@ -202,6 +203,9 @@ function swapItems(fromIndex, toIndex) {
   let temp = listStudentsDataSeats[fromIndex];
   listStudentsDataSeats[fromIndex] = listStudentsDataSeats[toIndex];
   listStudentsDataSeats[toIndex] = temp;
+  console.log(listStudentsDataSeats[fromIndex]);
+  console.log(listStudentsDataSeats[toIndex]);
+  console.log(temp);
 }
 btnSaveRaspored.addEventListener("click", (e) => {
   if (localStorage.getItem("studentDataSeatsI4")) {
@@ -209,6 +213,12 @@ btnSaveRaspored.addEventListener("click", (e) => {
       "studentDataSeatsI4",
       JSON.stringify(listStudentsDataSeats)
     );
-    alert("Преомените се зачувани!");
+    alert("Промените се зачувани!");
+  }
+});
+btnClearStorage.addEventListener("click", (e) => {
+  if (localStorage.getItem("studentDataSeatsI4")) {
+    localStorage.removeItem("studentDataSeatsI4");
+    alert("Податоците се избришани!");
   }
 });
