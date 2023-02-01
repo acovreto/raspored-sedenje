@@ -1,75 +1,76 @@
-const classIII4 = `1. Башукоски Даниел
-2. Блажески Виктор
-3. Вучетиќ Дејан
-4. Димоска Емилија
-5. Илијевска Софија
-6. Јузмески Мартин
-7. Каланоски Никола
-8. Колушоски Филип
-9. Кочоски Христијан
-10. Кутаноски Драган
-11. Маџар Марино
-12. Милошоски Горазд
-13. Митревски Наум
-14. Настовски Марко
-15. Новеска Ана
-16. Палитов Стефан
-17. Палитова Сара
-18. Петрески Давор
-19. Речкоски Наум
-20. Рушан Енис
-21. Симоновски Давид
-22. Симоноски Мартин
-23. Смилевски Владимир
-24. Србакоски Христијан
-25. Стефаноски Петар
-26. Стојанов Благојче
-27. Стрезовска Бојана
-28. Танаскоски Петар
-29. Трифуновски Филип
-30. Трпески Антониј
-31. Целески Никола`;
-const classI4 = `1. Богојовски Благоја
-2. Брдароска Марија
-3. Гугоски Филип
-4. Димиќ Лука
-5. Донев Стефан
-6. Донески Филип
-7. Ѓорески Климент
-8. Јанески Виктор
-9. Јованоски Бојан
-10. Јованчев Андреј
-11. Јоноска Кети
-12. Каланоски Владимир
-13. Крстаноски Дарко
-14. Кузманоска Јана
-15. Мајкиќ Мартин
-16. Маркоски Марио
-17. Мешкоски Андреј
-18. Митревски Христијан
-19. Мургоски Славчо
-20. Мурџоски Борјан
-21. Новаков Павел
-22. Палоски Бојан
-23. Попоски Марко
-24. Ристевски Мартин
-25. Савиќ Андреа
-26. Стевановски Стефан
-27. Стојаноски Александар
-28. Тасеска Мелани
-29. Тодороски Лука
-30. Толески Борис
-31. Трифуноски Кристијан
-32. Трпески Бојан`;
+const classIII3 = `1. Апостоловски Марко
+2. Бајрам Ален
+3. Бакулески Дамјан
+4. Гиноски Јован
+5. Димитријески Мартин
+6. Димоски Димитар
+7. Дуклески Александар
+8. Ѓорѓиески Андреј
+9. Ѓоршески Виктор
+10. Ѓоршески Марио
+11. Завојчевски Илија
+12. Здравковиќ Владимир
+13. Иловски Бојан
+14. Јовчески Иво
+15. Кочески Бобан
+16. Марков Марио
+17. Марков Никола
+18. Маркоска Марта
+19. Маркоски Јован
+20. Модева Климентина
+21. Настески Виктор
+22. Павлески Марио
+23. Петрески Кристијан
+24. Попов Виктор
+25. Сејдиноски Ерен
+26. Трпески Александар
+27. Тупаноски Јорданчо
+28. Цаноски Христијан
+29. Цацаноски Андреј
+30. Целески Христијан`;
+const photosIII3 = [
+  "treto3photos/photo1.jpg",
+  "treto3photos/photo2.jpg",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "treto3photos/viktorGj.jpg",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "treto3photos/photo13.jpg",
+  "treto3photos/photo14.jpg",
+  "Avatar.PNG",
+  "treto3photos/photo16.jpg",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+  "Avatar.PNG",
+];
+
+
 const btnSaveRaspored = document.querySelector(".btn-save-class");
 const btnClearStorage = document.querySelector(".btn-clear-storage");
 const rasSedWraper = document.querySelector(".ras-sed-wraper");
 
 // console.log(listStudents);
-if (!localStorage.getItem("studentDataSeatsI4")) {
+if (!localStorage.getItem("studentDataSeatsIII3")) {
   let listStudents = [];
   let listStudentsData = [];
-  classI4.split("\n").forEach((student) => {
+  classIII3.split("\n").forEach((student) => {
     let s1 = student.split(".");
     listStudents.push(s1[1].trim());
   });
@@ -77,9 +78,10 @@ if (!localStorage.getItem("studentDataSeatsI4")) {
     listStudentsData.push({
       seat: i,
       name: student,
-      photo: `https://randomuser.me/api/portraits/men/${i + 1}.jpg`,
+      photo: photosIII3[i],
     });
   });
+
   if (listStudents.length > 30) {
     for (let i = listStudents.length; i < 36; i++) {
       listStudentsData[i] = {
@@ -89,14 +91,17 @@ if (!localStorage.getItem("studentDataSeatsI4")) {
       };
     }
   }
-  localStorage.setItem("studentDataSeatsI4", JSON.stringify(listStudentsData));
+  localStorage.setItem(
+    "studentDataSeatsIII3",
+    JSON.stringify(listStudentsData)
+  );
 }
 
 // ****************************
 // ****************************
 let html = ``;
 let listStudentsDataSeats = JSON.parse(
-  localStorage.getItem("studentDataSeatsI4")
+  localStorage.getItem("studentDataSeatsIII3")
 );
 
 for (let i = 1; i <= Math.ceil(listStudentsDataSeats.length / 2); i++) {
@@ -150,14 +155,11 @@ function addEventListeners() {
   });
 }
 function dragStart() {
-  console.log("Event: ", "dragstart");
   dragStartIndex = +this.getAttribute("data-index");
   this.className += "hold";
   setTimeout(() => {
     this.classList.add("invisible");
   }, 0);
-
-  console.log(dragStartIndex);
 }
 function dragEnd() {
   // console.log("Event: ", "dragend");
@@ -183,7 +185,6 @@ function dragOver(e) {
 }
 
 function dragDrop() {
-  console.log("Event: ", "drop");
   const dragEndIndex = +this.getAttribute("data-index");
   // console.log(dragEndIndex);
   swapItems(dragStartIndex, dragEndIndex);
@@ -203,22 +204,20 @@ function swapItems(fromIndex, toIndex) {
   let temp = listStudentsDataSeats[fromIndex];
   listStudentsDataSeats[fromIndex] = listStudentsDataSeats[toIndex];
   listStudentsDataSeats[toIndex] = temp;
-  console.log(listStudentsDataSeats[fromIndex]);
-  console.log(listStudentsDataSeats[toIndex]);
-  console.log(temp);
 }
 btnSaveRaspored.addEventListener("click", (e) => {
-  if (localStorage.getItem("studentDataSeatsI4")) {
+  if (localStorage.getItem("studentDataSeatsIII3")) {
     localStorage.setItem(
-      "studentDataSeatsI4",
+      "studentDataSeatsIII3",
       JSON.stringify(listStudentsDataSeats)
     );
+    window.location.reload();
     alert("Промените се зачувани!");
   }
 });
 btnClearStorage.addEventListener("click", (e) => {
-  if (localStorage.getItem("studentDataSeatsI4")) {
-    localStorage.removeItem("studentDataSeatsI4");
+  if (localStorage.getItem("studentDataSeatsIII3")) {
+    localStorage.removeItem("studentDataSeatsIII3");
     alert("Податоците се избришани!");
   }
 });
